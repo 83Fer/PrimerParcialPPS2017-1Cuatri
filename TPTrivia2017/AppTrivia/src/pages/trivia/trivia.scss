@@ -1,0 +1,130 @@
+page-trivia {
+
+   body {
+	width: 90%;
+    font-family: 'Lato', sans-serif;
+    background: #A26BA2;
+    padding-top: 35px;	
+}
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+}
+
+.form {
+    padding: 30px 40px;
+    margin: 0 0 35px;
+    background: #f0f0f0;
+    border-radius: 0;
+}
+
+h1 {
+    margin-top: 0;
+    text-align: center;
+    color: white;
+    font-size: 400%;
+    margin-bottom: 10px;
+}
+
+#score {
+    color: white;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 150%;
+}
+
+#content {
+    width: 100%;
+}
+
+.wrapper .must {
+    color: red;
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.wrapper h2 {
+    float: left;
+    font-size: 450%;
+    margin-top: 0;
+    color: #732C7B;
+    font-family: 'Cardo', serif;
+    margin-bottom: 10px;
+}
+
+.wrapper h3 {
+    font-size: 225%;
+    margin: 0 10px 10px 90px;
+    color: #732C7B;
+}
+
+.wrapper h4 {
+    text-align: center;
+    font-size: 120%;
+}
+
+#choices {
+    margin-left: 90px;
+    font-size: 170%;
+    line-height: 2em;
+}
+
+#choices p {
+    position: relative;
+    left: 33px;
+    bottom: 18px;
+    margin-top: 0;
+    width: 465px;
+}
+
+#choices input[type="checkbox"] {
+    display: none;
+}
+
+#choices input[type="checkbox"] + label {
+    display: inline-block;
+    border: 3px solid #732C7B;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    margin-right: 5px;
+    cursor: pointer;
+    font-weight: normal;
+    vertical-align:middle;
+}
+
+#choices input[type="checkbox"]:checked + label:after {
+    content: '\f00c';
+    display: inline-block;
+    font: normal 20px FontAwesome;
+    position: relative;
+    bottom: 101px;
+    margin-bottom: 0;
+    color: #00aeae;
+    right: 1px;
+}
+
+button#submit {
+    background: #00aeae;
+    box-shadow: none;
+    border-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    font-size: 170%;
+    cursor: pointer;
+    width: 90%;
+    color: white;
+    margin-top: 25px;
+    margin-left: 14px;
+}
+
+button#submit:hover {
+    background: #009595;
+}
+
+}
