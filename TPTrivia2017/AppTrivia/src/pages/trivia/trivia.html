@@ -23,9 +23,10 @@
 		<div id="content">
 			<p class="must">(Debe elegir una respuesta)</p>
 			<h2 id="num"></h2>
-			<h3 id="question"></h3>
-			<div id="choices"></div>
-			<button id="submit">Enviar</button>
+			<h3 id="question" ></h3>
+				
+			<div id="choices" *ngFor="let preg of pregunta | async">{{preg.respuestas.resp1}}</div>
+			<button id="submit" (click)="Enviar()" >Enviar</button>
 			<!-- <p id="score"></p> -->
 		</div>
 	</div>
