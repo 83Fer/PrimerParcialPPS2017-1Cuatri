@@ -36,25 +36,27 @@ export class LoginPage {
   {
     if(this.ValidaCamposLog())
     {
-      this.angfire.auth.login({
-        email: this.mail,
-        password: this.clave
-      },
-      {
-        provider: AuthProviders.Password,
-        method: AuthMethods.Password
-      }).then((response)=>{
-        console.log('Login success' + JSON.stringify(response));
-        let currentuser= {
-          email: response.auth.email
-        };
-        window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
-        this.AlertMensaje("Bienvenido!!", "<h2>Usted ha ingresado al juego.</h2>");
-        this.navCtrl.push(TabsPage);
-      }).catch((error) => {
-        console.log(error);
-        this.AlertMensaje("Error de Ingreso!!", "<h2>El usuario o contraseña son invalidas.</h2>");
-      })
+      // this.angfire.auth.login({
+      //   email: this.mail,
+      //   password: this.clave
+      // },
+      // {
+      //   provider: AuthProviders.Password,
+      //   method: AuthMethods.Password
+      // }).then((response)=>{
+      //   console.log('Login success' + JSON.stringify(response));
+      //   let currentuser= {
+      //     email: response.auth.email
+      //   };
+      //   window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+      //   this.AlertMensaje("Bienvenido!!", "<h2>Usted ha ingresado al juego.</h2>");
+      //   this.navCtrl.push(TabsPage);
+      // }).catch((error) => {
+      //   console.log(error);
+      //   this.AlertMensaje("Error de Ingreso!!", "<h2>El usuario o contraseña son invalidas.</h2>");
+      // })
+
+      this.navCtrl.push(TabsPage);
 
       
     }

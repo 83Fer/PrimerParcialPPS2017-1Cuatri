@@ -21,11 +21,14 @@
 	<!-- <div class="diamond"></div> -->
 	<div class="wrapper" id="wrapper">
 		<div id="content">
-			<p class="must">(Debe elegir una respuesta)</p>
+			<!--<p class="must">(Debe elegir una respuesta)</p>-->
 			<h2 id="num"></h2>
-			<h3 id="question" ></h3>
+			<h3 id="question" >{{myPreg.preg}}</h3>
 				
-			<div id="choices" *ngFor="let preg of pregunta | async">{{preg.respuestas.resp1}}</div>
+			<div id="choices" >
+							{{resp1}}	
+			</div>
+			
 			<button id="submit" (click)="Enviar()" >Enviar</button>
 			<!-- <p id="score"></p> -->
 		</div>
