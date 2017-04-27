@@ -17,6 +17,7 @@ import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Vibration } from '@ionic-native/vibration';
 
 //Variable de configuracion firebase
 export const firebaseConfig = {
@@ -55,6 +56,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    Vibration,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

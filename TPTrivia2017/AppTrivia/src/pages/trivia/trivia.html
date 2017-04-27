@@ -23,13 +23,24 @@
 		<div id="content">
 			<!--<p class="must">(Debe elegir una respuesta)</p>-->
 			<h2 id="num"></h2>
-			<h3 id="question" >{{myPreg.preg}}</h3>
+			<h3 id="question" >{{preg}}</h3>
 				
 			<div id="choices" >
-							{{resp1}}	
+			{{resp1}}
+			<input type="radio"  name="resp" [(ngModel)]="eleccion" value="resp1" />
+			<br>
+			{{resp2}} 
+			<input type="radio"  name="resp" [(ngModel)]="eleccion" value="resp2"/>
+			<br>
+			{{resp3}}
+			<input type="radio"  name="resp" [(ngModel)]="eleccion" value="resp3"/>
+			
 			</div>
 			
 			<button id="submit" (click)="Enviar()" >Enviar</button>
+			<br><br>
+			<label *ngIf="correcto=='CORRECTO'" style='font-size: 20pt; font-weight: bold; color: green; text-align: center;'>{{correcto}}!!</label>
+			<label *ngIf="correcto=='INCORRECTO'" style='font-size: 20pt; font-weight: bold; color: red; text-align: center;'>{{correcto}}!!</label>
 			<!-- <p id="score"></p> -->
 		</div>
 	</div>

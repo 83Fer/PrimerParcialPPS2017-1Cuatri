@@ -5,6 +5,8 @@ import { FirebaseListObservable, AngularFireDatabase, AngularFire } from 'angula
 
 import { InfoPage } from '../info/info';
 
+import { Vibration } from '@ionic-native/vibration';
+
 import { Preguntas } from '../../clases/Preguntas';
 
 
@@ -17,44 +19,87 @@ export class TriviaPage {
 
 
    pregunta: FirebaseListObservable<any[]>;
+ 
+  eleccion:string;
+  correcto:string;
+  respCorrectas:string;
 
-   private myPreg: Preguntas;
-resp1:string;
+  i:number = 0;
+  preg: string;
+  resp1:string;
+  resp2:string;
+  resp3:string;
+  respTrue:string;
 
   constructor(public navCtrl: NavController,
               public alertController: AlertController, 
               public database: AngularFireDatabase,
-              public angfire: AngularFire) {
+              public angfire: AngularFire, 
+              public vibration: Vibration) {
 
                 //console.log("Pregunta" + this.myPreg.preg);
                 this.pregunta = angfire.database.list('/preguntas');
-               this.myPreg = new Preguntas();
-                this.TraerPreguntas();
-                console.log("Aca 2 " + this.myPreg.preg);
-
+               //this.myPreg = new Preguntas();
+                this.TraerPreguntas(0);
   }
 
-  TraerPreguntas()
+  TraerPreguntas(i:number)
   {
     var traerPreg = this.angfire.database.list("/preguntas").subscribe(valor => {
       valor.forEach(v =>{
-       this.myPreg.preg = v.preg;
-       this.myPreg.respuestas = v.respuestas.resp1;
-        console.log(valor[0].preg);
+       
       });
-      console.log("Aca:" + valor[1].preg);
-      console.log("Aca 1:" + this.myPreg.preg);
-      console.log("Aca 3:" + this.myPreg.respuestas);
-      this.resp1 = valor[1].respuestas.resp1;
-      console.log("Aca 4:" + this.resp1);
+      this.preg = valor[i].preg;
+      this.resp1 = valor[i].respuestas.resp1;
+      this.resp2 = valor[i].respuestas.resp2;
+      this.resp3 = valor[i].respuestas.resp3;
+      this.respTrue = valor[i].respuestas.respTrue;
     });
-    //Aca llega la variable vacia
-    console.log("Hola" + this.myPreg.preg);
+    
   }
 
   Enviar()
   {
-    this.navCtrl.push(InfoPage);
+    if(this.i < 2)
+    {
+        if(this.respTrue == this.eleccion)
+        {
+          var temp=this;
+          this.correcto = "CORRECTO";
+          try {
+            this.vibration.vibrate(500);
+          } catch (error) {
+            console.log("Vibra");
+          }
+          setTimeout(function(){  
+            temp.i++;
+            temp.TraerPreguntas(temp.i);
+            temp.correcto = ""; 
+            temp.eleccion = ""; 
+          }, 3000);
+          
+        }
+        else{
+          var temp = this;
+          this.correcto = "INCORRECTO";
+          try {
+            this.vibration.vibrate(1500);
+            } catch (error) {
+            console.log("Vibra");
+            }
+          setTimeout(function(){
+            temp.i++;
+            temp.TraerPreguntas(temp.i);
+            temp.correcto = "";
+            temp.eleccion = "";
+          }, 3000);
+          
+        }
+    }
+    else{
+
+    }
+    
   }
 
 
