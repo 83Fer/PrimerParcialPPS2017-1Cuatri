@@ -7,7 +7,7 @@ import { NavController } from 'ionic-angular';
 })
 export class ContactPage {
 
-fotoPerfil:string= '/assets/img/fotoPerfil.jpg';
+fotoPerfil:string= './assets/img/fotoPerfil.jpg';
 mostrar:string;
 
   constructor(public navCtrl: NavController) {

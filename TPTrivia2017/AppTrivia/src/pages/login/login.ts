@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
 //Llamar a refrencia Alert Controller
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, NavParams} from 'ionic-angular';
 
 //importamos la depencias de firebase, 
 //cada mificacion que haga se actualiza en tiempo real y referencia a la base de datos
 import { FirebaseListObservable, AngularFireDatabase, AngularFire, AuthMethods, AuthProviders } from 'angularfire2';
 
 import { TabsPage } from '../tabs/tabs';
+import { TriviaPage } from '../trivia/trivia';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
+
 
   idUsuario : string = "";
   usuario :string = "";
@@ -21,14 +23,14 @@ export class LoginPage {
   mail : string = "";
   logged : boolean;
 
-  user: FirebaseListObservable<any>;
+  users: FirebaseListObservable<any>;
 
   constructor(public navCtrl: NavController,
               public alertController: AlertController, 
               public database: AngularFireDatabase,
               public angfire: AngularFire) {
 
-      this.user = this.database.list('/Registros');          
+      this.users = this.database.list('/Usuarios');          
 
   }
 
@@ -36,27 +38,30 @@ export class LoginPage {
   {
     if(this.ValidaCamposLog())
     {
-      // this.angfire.auth.login({
-      //   email: this.mail,
-      //   password: this.clave
-      // },
-      // {
-      //   provider: AuthProviders.Password,
-      //   method: AuthMethods.Password
-      // }).then((response)=>{
-      //   console.log('Login success' + JSON.stringify(response));
-      //   let currentuser= {
-      //     email: response.auth.email
-      //   };
-      //   window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
-      //   this.AlertMensaje("Bienvenido!!", "<h2>Usted ha ingresado al juego.</h2>");
-      //   this.navCtrl.push(TabsPage);
-      // }).catch((error) => {
-      //   console.log(error);
-      //   this.AlertMensaje("Error de Ingreso!!", "<h2>El usuario o contraseña son invalidas.</h2>");
-      // })
+      this.angfire.auth.login({
+        email: this.mail,
+        password: this.clave
+      },
+      {
+        provider: AuthProviders.Password,
+        method: AuthMethods.Password
+      }).then((response)=>{
+        console.log('Login success' + JSON.stringify(response));
+        let currentuser= {
+          email: response.auth.email
+        };
+        window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+        this.AlertMensaje("Bienvenido!!", "<h2>Usted ha ingresado al juego.</h2>");
+        this.navCtrl.push(TabsPage, {
+          email: this.mail,
+          respCorrectas: "Abandono",
+        });
+      }).catch((error) => {
+        console.log(error);
+        this.AlertMensaje("Error de Ingreso!!", "<h2>El usuario o contraseña son invalidas.</h2>");
+      })
 
-      this.navCtrl.push(TabsPage);
+      //this.navCtrl.push(TabsPage);
 
       
     }
@@ -81,8 +86,15 @@ export class LoginPage {
           email: response.auth.email
         };
         window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
+            this.users.push({
+            nombre: this.usuario,
+            mail: this.mail,
+            });
         this.AlertMensaje("Bienvenido", "Su perfil a sido guardado con exito!!!");
-        this.navCtrl.push(TabsPage);
+        this.navCtrl.push(TabsPage, {
+          email: this.mail,
+          respCorrectas: "Abandono",
+        });
       }).catch((error) => {
         console.log(error);
         this.AlertMensaje("Error de Ingreso!!", "<h2>Ya hay un usuario registrado con este mail.</h2>");
