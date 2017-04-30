@@ -20,32 +20,19 @@ export class TabsPage {
   tab3Root = ContactPage;
 
   constructor( public navCtrl: NavController,  private navParams: NavParams) {
-    let email = navParams.get('email');
-    let resp = navParams.get('respCorrectas');
-    this.email = email;
-    this.respCorrectas = resp;
-    console.log(email);
+    // let email = navParams.get('email');
+    // let resp = navParams.get('respCorrectas');
+    // this.email = email;
+    // this.respCorrectas = resp;
+    // console.log(email);
 
-    this.i ++;
-    this.SubirResultado(this.i);
+    // this.i ++;
+    // this.SubirResultado(this.i);
     // this.navCtrl.push(TriviaPage, {
     //   email:this.email
     // });
   }
 
-  SubirResultado(i:number)
-  {
-    if(i == 1)
-    {
-      this.email2=this.email;
-      console.log("Vino 1 vez");
-    }
-    
-    if(i == 2)
-    {
-      console.log("Vino 2 veces");
-      console.log(this.email2);
-    }
-  }
+  
   
 }

@@ -7,5 +7,48 @@
 </ion-header>
 
 <ion-content padding>
+  
+
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/mootools/1.5.0/mootools-yui-compressed.js"></script>
+<script src="//jashkenas.github.io/underscore/underscore-min.js"></script>
+<script src="//code.jquery.com/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+  
+  <meta charset="utf-8">
+  <title>Last Task </title>   
+</head>
+<body >
+  <div class="container-fluid" >
+    <div class="row">
+     
+      <div class="col-md-3" style=" width: 100%;background:cornsilk;overflow: scroll;">
+        
+        <section>
+          
+          <table id="mytable" class="table table-hover table-bordered">
+            <tr style=" width: 100%;background:lightpink;">
+              <th style='font-size: 15pt; font-weight: bold; color: green; text-align: center;'>Nombre</th>
+              <th class="avarage" style='font-size: 15pt; font-weight: bold; color: green; text-align: center;' >Ultimas Respuestas</th>
+              <th class="calendar" style='font-size: 15pt; font-weight: bold; color: green; text-align: center;'>Correctas</th>
+            </tr>
+            <tr *ngFor="let registro of registros | async">
+              <td class="studs">{{registro.nombre}}</td>
+              <td class="average">{{registro.respuestas}}</td>
+              <td class="score" style='text-align:center;' >{{registro.respCorrectas}}</td>
+            </tr>  
+          </table>
+          
+       </section>  
+        
+      </div>
+    </div>
+  </div>
+    
+
+</body>
+
 
 </ion-content>

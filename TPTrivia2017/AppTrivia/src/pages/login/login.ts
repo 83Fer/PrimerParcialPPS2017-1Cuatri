@@ -18,9 +18,9 @@ export class LoginPage {
 
   idUsuario : string = "";
   usuario :string = "";
-  clave : string = "";
+  clave : string = "123456";
   claveRep : string = "";
-  mail : string = "";
+  mail : string = "fer@gmail.com";
   logged : boolean;
 
   users: FirebaseListObservable<any>;
@@ -36,6 +36,8 @@ export class LoginPage {
 
   Login()
   {
+    
+    
     if(this.ValidaCamposLog())
     {
       this.angfire.auth.login({
@@ -46,16 +48,14 @@ export class LoginPage {
         provider: AuthProviders.Password,
         method: AuthMethods.Password
       }).then((response)=>{
-        console.log('Login success' + JSON.stringify(response));
+        //console.log('Login success' + JSON.stringify(response));
         let currentuser= {
           email: response.auth.email
         };
         window.localStorage.setItem('currentuser', JSON.stringify(currentuser));
         this.AlertMensaje("Bienvenido!!", "<h2>Usted ha ingresado al juego.</h2>");
-        this.navCtrl.push(TabsPage, {
-          email: this.mail,
-          respCorrectas: "Abandono",
-        });
+        this.navCtrl.push(TabsPage);
+
       }).catch((error) => {
         console.log(error);
         this.AlertMensaje("Error de Ingreso!!", "<h2>El usuario o contraseña son invalidas.</h2>");
@@ -81,7 +81,7 @@ export class LoginPage {
           password: this.clave
         }
         this.angfire.auth.createUser(user).then((response)=>{
-        console.log('Registro' + JSON.stringify(response));
+        //console.log('Registro' + JSON.stringify(response));
         let currentuser= {
           email: response.auth.email
         };
@@ -91,10 +91,8 @@ export class LoginPage {
             mail: this.mail,
             });
         this.AlertMensaje("Bienvenido", "Su perfil a sido guardado con exito!!!");
-        this.navCtrl.push(TabsPage, {
-          email: this.mail,
-          respCorrectas: "Abandono",
-        });
+        this.navCtrl.push(TabsPage);
+
       }).catch((error) => {
         console.log(error);
         this.AlertMensaje("Error de Ingreso!!", "<h2>Ya hay un usuario registrado con este mail.</h2>");

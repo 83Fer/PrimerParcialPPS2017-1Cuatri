@@ -37,7 +37,7 @@
 			
 			</div>
 			
-			<button id="submit" (click)="Enviar()" >Enviar</button>
+			<button id="submit" (click)="Enviar()" [disabled]="eleccion==''" >Enviar</button>
 			<br><br>
 			<label *ngIf="correcto=='CORRECTO'" style='font-size: 20pt; font-weight: bold; color: green; text-align: center;'>{{correcto}}!!</label>
 			<label *ngIf="correcto=='INCORRECTO'" style='font-size: 20pt; font-weight: bold; color: red; text-align: center;'>{{correcto}}!!</label>

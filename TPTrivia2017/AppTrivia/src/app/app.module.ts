@@ -18,6 +18,7 @@ import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Vibration } from '@ionic-native/vibration';
+import { NativeAudio } from '@ionic-native/native-audio';
 
 //Variable de configuracion firebase
 export const firebaseConfig = {
@@ -57,6 +58,7 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     Vibration,
+    NativeAudio,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
