@@ -1,0 +1,47 @@
+page-info {
+body{
+    background-color: lightblue;
+}
+header{
+  width: 100%;
+  /* background: grey; */
+  height: 70px;
+  font-size: 22px;
+  text-align: left;
+  padding: 10px;
+  overflow: scroll;
+}
+.col-md-9{
+  width: 120%;
+  background: black;
+  height: 70px;
+  font-size: 22px;
+  text-align: left;
+  padding: 15px;
+  overflow: scroll;
+}
+
+header button{
+  left: 20%;
+  position: relative;
+  overflow: scroll;
+}
+
+section{
+  height: 100%;
+  overflow: scroll;
+  /* background: green; */
+}
+
+.red{
+  color:red;
+  padding: 3px;
+}
+
+.nametd{
+  
+}
+::-webkit-scrollbar {
+      width: 15px;
+}
+}

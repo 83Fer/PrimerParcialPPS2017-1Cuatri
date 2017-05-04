@@ -61,7 +61,6 @@ export class TriviaPage {
                //this.myPreg = new Preguntas();
               this.CargarSonidos();
 
-
                this.ObtenerRegistro();
 
                 this.TraerPreguntas(0);
