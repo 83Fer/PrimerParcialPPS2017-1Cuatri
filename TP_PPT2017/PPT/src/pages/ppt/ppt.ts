@@ -23,6 +23,7 @@ export class PptPage {
 
    //Variables del juego-->1-piedra, 2-papel, 3-tijera
    cpu:number;
+   mostrar:string = "elige";
 
   //fotoDados:string= './assets/img/dados-piedra-papel-tijera.jpg';
 
@@ -57,19 +58,25 @@ export class PptPage {
   {
         this.cpu= Math.floor((Math.random() * 3) + 1);
         console.log(this.cpu);
-        this.MostrarImagenes(this.cpu);
+        //this.MostrarImagenes(this.cpu);
 
         switch (this.cpu) {
           case 1://Empate
             this.AlertMensaje("Usted ha...", "<h2>Empatado.</h2>");
+            this.mostrar="";
+            this.eleccion = this.piedra;
             this.partida = "Empato";
           break;
           case 2://Perdio
             this.AlertMensaje("Usted ha...", "<h2>Perdido.</h2>");
+            this.eleccion = this.papel;
+            this.mostrar="";
             this.partida = "Perdio";
           break;
           case 3://Gano
             this.AlertMensaje("Usted ha...", "<h2>Ganado.</h2>");
+            this.eleccion = this.tijera;
+            this.mostrar="";
             this.partida = "Gano";
           break;
           default:
@@ -82,19 +89,25 @@ export class PptPage {
   {
         this.cpu= Math.floor((Math.random() * 3) + 1);
         console.log(this.cpu);
-        this.MostrarImagenes(this.cpu);
+        //this.MostrarImagenes(this.cpu);
 
         switch (this.cpu) {
           case 1://Gano
             this.AlertMensaje("Usted ha...", "<h2>Ganado.</h2>");
+            this.eleccion = this.piedra;
+            this.mostrar="";
             this.partida = "Gano";
           break;
           case 2://Empato
             this.AlertMensaje("Usted ha...", "<h2>Empatado.</h2>");
+            this.eleccion = this.papel;
+            this.mostrar="";
             this.partida = "Empato";
           break;
           case 3://Perdio
             this.AlertMensaje("Usted ha...", "<h2>Perdido.</h2>");
+            this.eleccion = this.tijera;
+            this.mostrar="";
             this.partida = "Perdio";
           break;
           default:
@@ -107,19 +120,25 @@ export class PptPage {
   {
         this.cpu= Math.floor((Math.random() * 3) + 1);
         console.log(this.cpu);
-        this.MostrarImagenes(this.cpu);
+        //this.MostrarImagenes(this.cpu);
 
         switch (this.cpu) {
           case 1://Perdio
             this.AlertMensaje("Usted ha...", "<h2>Perdido.</h2>");
+            this.eleccion = this.piedra;
+            this.mostrar="";
             this.partida = "Perdio";
           break;
           case 2://Gano
             this.AlertMensaje("Usted ha...", "<h2>Ganado.</h2>");
+            this.eleccion = this.papel;
+            this.mostrar="";
             this.partida = "Gano";
           break;
           case 3://Empato
             this.AlertMensaje("Usted ha...", "<h2>Empatado.</h2>");
+            this.eleccion = this.tijera;
+            this.mostrar="";
             this.partida = "Empato";
           break;
           default:
@@ -131,7 +150,7 @@ export class PptPage {
   FuncionTiempo(){
       var temp=this;
       if(this.partida == "Empato"){
-          this.eleccion = "";
+          //this.eleccion = "";
       
           //this.nativeAudio.play('correcto', () => console.log('sonido correcto'));
           try {
@@ -141,11 +160,11 @@ export class PptPage {
           }
           setTimeout(function(){
               temp.GuardarResultado();
-            
-          }, 3000);
+              temp.mostrar= "Elige";
+          }, 5000);
       }
       if(this.partida == "Gano"){
-          this.eleccion = "";
+          //this.eleccion = "";
       
           this.nativeAudio.play('correcto', () => console.log('sonido correcto'));
           try {
@@ -155,11 +174,11 @@ export class PptPage {
           }
           setTimeout(function(){
               temp.GuardarResultado();
-            
-          }, 3000);
+              temp.mostrar= "Elige";
+          }, 5000);
       }
       if(this.partida == "Perdio"){
-          this.eleccion = "";
+          //this.eleccion = "";
       
           this.nativeAudio.play('incorrecto', () => console.log('sonido incorrecto'));
           try {
@@ -169,46 +188,49 @@ export class PptPage {
           }
           setTimeout(function(){
               temp.GuardarResultado();
-            
-          }, 3000);
+              temp.mostrar= "Elige";
+          }, 5000);
       }
           
   }
 
-  MostrarImagenes(randomCpu:number){
-    var cpu:string;
-    switch (randomCpu) {
-      case 1:
-         cpu = this.piedra;
-        break;
-        case 2:
-          cpu = this.papel;
-        break;
-        case 3:
-          cpu = this.tijera;
-        break;
+  // MostrarImagenes(randomCpu:number){
+  //   var cpu:string;
+  //   switch (randomCpu) {
+  //     case 1:
+  //        this.eleccion = this.piedra;
+  //        console.log("piedra");
+  //       break;
+  //       case 2:
+  //         this.eleccion = this.papel;
+  //         console.log("piedra");
+  //       break;
+  //       case 3:
+  //         this.eleccion = this.tijera;
+  //         console.log("piedra");
+  //       break;
     
-      default:
-        break;
-    }
+  //     default:
+  //       break;
+  //   }
 
-    // var temp:this;
-    // temp.eleccion= "cloudy";
-    //           console.log("LLega Mostrar1");
-    // setInterval(function(){
-    //           temp.eleccion= "copy";
-    //           console.log("LLega Mostrar2");
-    //       }, 2000);
-    //       setInterval(function(){
-    //           temp.eleccion= "cut";
-    //           console.log("LLega Mostrar3");
-    //       }, 2000);
-    //       setInterval(function(){
-    //           temp.eleccion= cpu;
-    //           console.log("LLega Resultado");
-    //       }, 2000);
-          this.eleccion = cpu;
-  }
+  //   // var temp:this;
+  //   // temp.eleccion= "cloudy";
+  //   //           console.log("LLega Mostrar1");
+  //   // setInterval(function(){
+  //   //           temp.eleccion= "copy";
+  //   //           console.log("LLega Mostrar2");
+  //   //       }, 2000);
+  //   //       setInterval(function(){
+  //   //           temp.eleccion= "cut";
+  //   //           console.log("LLega Mostrar3");
+  //   //       }, 2000);
+  //   //       setInterval(function(){
+  //   //           temp.eleccion= cpu;
+  //   //           console.log("LLega Resultado");
+  //   //       }, 2000);
+  //         //this.eleccion = cpu;
+  // }
  
   CargarSonidos() {
 
@@ -293,7 +315,7 @@ export class PptPage {
 
     }  
 
-    this.eleccion = this.refrescar;
+    //this.eleccion = this.refrescar;
     
   }
 

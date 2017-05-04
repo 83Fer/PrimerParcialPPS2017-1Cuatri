@@ -7,9 +7,9 @@
 <ion-content padding >
 <label style='font-size: 25pt; font-weight: bold; color:black; text-align: center;'>{{nombre}}</label>
  <div id="piedraPapelOTijera-button-bar1" class="button-bar">
-      <button (click)="Piedra()" id="piedraPapelOTijera-button4" class="button button-positive  button-block "><ion-icon name="cloudy"></ion-icon></button>
-      <button (click)="Papel()" id="piedraPapelOTijera-button5" class="button button-positive  button-block "><ion-icon name="copy"></ion-icon></button>
-      <button (click)="Tijera()" id="piedraPapelOTijera-button6" class="button button-positive  button-block "><ion-icon name="cut"></ion-icon></button>
+      <button (click)="Piedra()" [disabled]="mostrar==''" id="piedraPapelOTijera-button4" class="button button-positive  button-block "><ion-icon name="cloudy"></ion-icon></button>
+      <button (click)="Papel()" [disabled]="mostrar==''" id="piedraPapelOTijera-button5" class="button button-positive  button-block "><ion-icon name="copy"></ion-icon></button>
+      <button (click)="Tijera()" [disabled]="mostrar==''" id="piedraPapelOTijera-button6" class="button button-positive  button-block "><ion-icon name="cut"></ion-icon></button>
     </div>
     <label style='font-size: 25pt; font-weight: bold; color:black; text-align: center;'>CPU</label>
     <div style="margin: 0px; line-height: 250px; background-color:black; text-align: center;">

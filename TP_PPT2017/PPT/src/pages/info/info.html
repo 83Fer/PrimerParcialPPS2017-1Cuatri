@@ -6,7 +6,16 @@
   </ion-navbar>
 </ion-header>
 
-
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event);">
+    <ion-refresher-content 
+      pullingText="Pull to refresh"
+      pullingIcon="arrow-dropdown"
+      refreshingSpinner="circles"
+      refreshingText="..cargando">
+    </ion-refresher-content>
+ </ion-refresher>
+ 
 
 <head>
 <script src="//ajax.googleapis.com/ajax/libs/mootools/1.5.0/mootools-yui-compressed.js"></script>
@@ -24,19 +33,21 @@
     <div class="row">
      
       <div class="col-md-3" style=" width: 100%;background:cornsilk;overflow: scroll;">
-        
-        <section>
+        <button (click)=Actualizar()>
+            Actualizar
+          </button>
+        <section style="overflow-y: scroll;overflow-x: scroll;">
           
-          <table id="mytable" class="table table-hover table-bordered">
+          <table id="mytable" class="table table-hover table-bordered" >
             <tr style=" width: 100%;background:lightpink;">
-              <th style='font-size: 15pt; font-weight: bold; color: green; text-align: center;'>Nombre</th>
-              <th class="avarage" style='font-size: 15pt; font-weight: bold; color: green; text-align: center;' >Ultimas Respuestas</th>
-              <th class="calendar" style='font-size: 15pt; font-weight: bold; color: green; text-align: center;'>Correctas</th>
+              <th style='font-size: 15pt; font-weight: bold; color: green; text-align: center;'>Empatados</th>
+              <th class="avarage" style='font-size: 15pt; font-weight: bold; color: green; text-align: center;' >Perdidos</th>
+              <th class="calendar" style='font-size: 15pt; font-weight: bold; color: green; text-align: center;'>Ganados</th>
             </tr>
-            <tr *ngFor="let registro of registros | async">
-              <td class="studs">{{registro.nombre}}</td>
-              <td class="average">{{registro.respuestas}}</td>
-              <td class="score" style='text-align:center;' >{{registro.respCorrectas}}</td>
+            <tr *ngFor="let item of items">
+              <td class="studs" *ngIf="item.partida=='Empato'" >{{item.nombre}}-{{item.fecha}}</td>
+              <td class="average" *ngIf="item.partida=='Perdio'" >{{item.nombre}}-{{item.fecha}}</td>
+              <td class="score" *ngIf="item.partida=='Gano'" style='text-align:center;' >{{item.nombre}}-{{item.fecha}}</td>
             </tr>  
           </table>
           
@@ -46,5 +57,8 @@
     </div>
   </div>
 
+</body>
 
+
+</ion-content>
 
