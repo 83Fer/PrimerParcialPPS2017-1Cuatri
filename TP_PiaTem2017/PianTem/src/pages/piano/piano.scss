@@ -1,0 +1,61 @@
+page-piano {
+.simon-btn {
+  width: 110px;
+  height: 110px;
+  margin: 20px;
+  display: inline-block;
+  cursor: pointer;
+   box-shadow: 0 9px #999;
+  border-radius: 15px;
+}
+
+#buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+ 
+}
+
+.simon-btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+ion-content {
+ background-image: url('/assets/img/simpsonsFondo.jpg');
+}
+
+#foto1 {
+  //background-color: #8bc34a;
+  background-image: url('/assets/img/donBarredora1.jpg');
+  background-position: 50% 50%;
+}
+
+#foto2 {
+  background-image: url('/assets/img/matanga.jpg');
+  background-position: 50% 50%;
+}
+
+#foto3 {
+  background-image: url('/assets/img/prestasDinero.jpg');
+  background-position: 50% 50%;
+}
+
+#foto4 {
+  background-image: url('/assets/img/demediez.jpg');
+  background-position: 50% 50%;
+}
+#foto5 {
+  background-image: url('/assets/img/sevaaponerfeo.jpg');
+  background-position: 50% 50%;
+}
+#foto6 {
+  background-image: url('/assets/img/homeroRosca.jpg');
+  background-position: 50% 50%;
+}
+}

@@ -32,7 +32,11 @@ registros:FirebaseListObservable<any[]>;
               public database: AngularFireDatabase,
               public angfire: AngularFire) {
 
-                 this.registros = this.database.list('/Registros');
+                 this.registros = this.database.list('/Registros', {
+                   query: {
+                     orderByChild: "fecha"
+                   }
+                 });
                 console.log(this.registros);
                 // this.itemsEmp=[];
                 // this.itemsGan=[];

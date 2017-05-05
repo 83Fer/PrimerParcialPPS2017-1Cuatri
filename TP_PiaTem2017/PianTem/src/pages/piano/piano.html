@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Simpsons</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <div id="buttons" >
+  <button class="simon-btn" (click)="BotonUno()" [disabled]="mostrar==''" id="foto1"></button>
+  <button class="simon-btn" (click)="BotonDos()" [disabled]="mostrar==''" id="foto2"></button>
+  <br>
+  <button class="simon-btn" (click)="BotonTres()" [disabled]="mostrar==''" id="foto3"></button>
+  <button class="simon-btn" (click)="BotonCuatro()" [disabled]="mostrar==''" id="foto4"></button>
+  <br>
+  <button class="simon-btn" (click)="BotonCinco()" [disabled]="mostrar==''" id="foto5"></button>
+  <button class="simon-btn" (click)="BotonSeis()" [disabled]="mostrar==''" id="foto6"></button>
+</div>
+</ion-content>
