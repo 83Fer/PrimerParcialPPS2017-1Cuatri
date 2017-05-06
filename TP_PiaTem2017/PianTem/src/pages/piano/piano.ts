@@ -138,7 +138,7 @@ export class PianoPage {
           setTimeout(function(){
             temp.mostrar="elige";
             
-          }, 2000);
+          }, 1000);
   }
 
   BotonTres(){
@@ -192,7 +192,7 @@ export class PianoPage {
           setTimeout(function(){
             temp.mostrar="elige";
             
-          }, 2000);
+          }, 1000);
   }
 
   BotonSeis(){
