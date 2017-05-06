@@ -1,18 +1,27 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
     <ion-title>Simpsons</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  
  <div id="buttons" >
-  <button class="simon-btn" (click)="BotonUno()" [disabled]="mostrar==''" id="foto1"></button>
-  <button class="simon-btn" (click)="BotonDos()" [disabled]="mostrar==''" id="foto2"></button>
+   <br>
+  <button class="record-btn" id="play" ><ion-icon name="play"></ion-icon>
+  </button>
+  <button class="record-btn" id="stop"  (click)= "grabar='false'"><ion-icon name="square"></ion-icon>
+  </button>
+  <button class="record-btn" id="record"  (click)= "grabar='true'" ><ion-icon name="arrow-dropright-circle"></ion-icon>
+  </button>
   <br>
-  <button class="simon-btn" (click)="BotonTres()" [disabled]="mostrar==''" id="foto3"></button>
-  <button class="simon-btn" (click)="BotonCuatro()" [disabled]="mostrar==''" id="foto4"></button>
+  <button class="simon-btn" (click)="BotonUno()" [disabled]="mostrar==''" id="foto1"  value="homero23.mp3"></button>
+  <button class="simon-btn" (click)="BotonDos()" [disabled]="mostrar==''" id="foto2"  value="homero27.mp3"></button>
   <br>
-  <button class="simon-btn" (click)="BotonCinco()" [disabled]="mostrar==''" id="foto5"></button>
-  <button class="simon-btn" (click)="BotonSeis()" [disabled]="mostrar==''" id="foto6"></button>
+  <button class="simon-btn" (click)="BotonTres()" [disabled]="mostrar==''" id="foto3"  value="homero28.mp3"></button>
+  <button class="simon-btn" (click)="BotonCuatro()" [disabled]="mostrar==''" id="foto4"  value="homero22.mp3"></button>
+  <br>
+  <button class="simon-btn" (click)="BotonCinco()" [disabled]="mostrar==''" id="foto5"  value="homero13.mp3"></button>
+  <button class="simon-btn" (click)="BotonSeis()" [disabled]="mostrar==''" id="foto6"  value="homero29.mp3"></button>
 </div>
 </ion-content>

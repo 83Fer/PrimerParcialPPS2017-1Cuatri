@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { File } from '@ionic-native/file';
+
 import { NativeAudio } from '@ionic-native/native-audio';
 import { Vibration } from '@ionic-native/vibration';
 
@@ -9,15 +11,79 @@ import { Vibration } from '@ionic-native/vibration';
   templateUrl: 'piano.html'
 })
 export class PianoPage {
+  //Variables del juego
+  textMusica: string= "";
+  grabar: string = "false";
+  valor:string = "";
 
   mostrar:string = "elige";
 
   constructor(public navCtrl: NavController,
               public vibration: Vibration,
-              private nativeAudio: NativeAudio) {
+              private nativeAudio: NativeAudio,
+              private file: File) {
 
     this.CargarSonidos();
 
+  }
+
+  Graba(){
+    if(this.grabar == "true"){
+      console.log("graba");
+      this.textMusica = this.textMusica + this.valor;
+    }
+    if(this.grabar == "false"){
+
+      console.log("No graba");
+
+      if(this.textMusica != ""){
+          this.GuardarArchivo();
+
+          this.textMusica = "";
+      }
+      
+    }
+  }
+
+  
+
+  GuardarArchivo(){
+    var cordova: any;
+    try{
+
+    
+          this.file.createFile(cordova.file.dataDirectory , "piano.txt", true)
+          .then(function(response){
+              alert("Llego a escribir:" + response);
+              this.file.writeFile(cordova.file.dataDirectory , "piano.txt", this.textMusica, true)
+              .then(function(response){
+                alert("Llego a escribir1:" + response);
+                this.file.readAsText(cordova.file.dataDirectory, "piano.txt")
+                .then(function(response){
+                  alert("Se leyo bien:" + response);
+                },(error)=>{
+                  alert("NO llego" +response );
+                });
+              },(error)=>{
+                alert("NO llego" +response);
+              });
+          },(error)=>{
+            alert("NO llego");
+          });
+    
+    }catch(error){
+        alert("ERROR");
+      }
+    
+  }
+
+  LeerArchivo(){
+    var cordova:any;
+    try {
+      this.file.checkFile(cordova.file.dataDirectory, "piano.txt");
+    } catch (error) {
+      
+    }
   }
 
   CargarSonidos() {
@@ -42,17 +108,19 @@ export class PianoPage {
   BotonUno(){
     var temp=this;
     this.mostrar="";
-     this.nativeAudio.play('darthVader', () => console.log('sonido correcto'));
+     this.nativeAudio.play('donbarredora', () => console.log('sonido correcto'));
           try {
             this.vibration.vibrate(500);
           } catch (error) {
             console.log("Vibra");
           }
 
+          this.Graba();
+
           setTimeout(function(){
             temp.mostrar="elige";
             
-          }, 3000);
+          }, 5000);
   }
 
   BotonDos(){
@@ -64,10 +132,13 @@ export class PianoPage {
           } catch (error) {
             console.log("Vibra");
           }
+
+          this.Graba();
+
           setTimeout(function(){
             temp.mostrar="elige";
             
-          }, 3000);
+          }, 2000);
   }
 
   BotonTres(){
@@ -79,10 +150,13 @@ export class PianoPage {
           } catch (error) {
             console.log("Vibra");
           }
+
+          this.Graba();
+
           setTimeout(function(){
             temp.mostrar="elige";
             
-          }, 3000);
+          }, 9000);
   }
 
   BotonCuatro(){
@@ -94,10 +168,13 @@ export class PianoPage {
           } catch (error) {
             console.log("Vibra");
           }
+
+          this.Graba();
+
           setTimeout(function(){
             temp.mostrar="elige";
             
-          }, 3000);
+          }, 4000);
   }
 
   BotonCinco(){
@@ -109,25 +186,31 @@ export class PianoPage {
           } catch (error) {
             console.log("Vibra");
           }
+
+          this.Graba();
+
           setTimeout(function(){
             temp.mostrar="elige";
             
-          }, 3000);
+          }, 2000);
   }
 
   BotonSeis(){
     var temp=this;
     this.mostrar="";
-     this.nativeAudio.play('homeroRosca', () => console.log('sonido correcto'));
+     this.nativeAudio.play('quierounarosca', () => console.log('sonido correcto'));
           try {
             this.vibration.vibrate(500);
           } catch (error) {
             console.log("Vibra");
           }
+
+          this.Graba();
+
           setTimeout(function(){
             temp.mostrar="elige";
             
-          }, 3000);
+          }, 9000);
   }
 
 }

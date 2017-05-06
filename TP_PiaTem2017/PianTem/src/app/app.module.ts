@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
+import { File } from '@ionic-native/file';
 //Dependencias para usar Firebase
 import {AngularFireModule} from 'angularfire2'
 
@@ -52,7 +53,8 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     Vibration,
-    NativeAudio,  
+    NativeAudio,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

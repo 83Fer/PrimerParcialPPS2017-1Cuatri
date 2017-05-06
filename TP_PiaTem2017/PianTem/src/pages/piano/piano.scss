@@ -9,6 +9,18 @@ page-piano {
   border-radius: 15px;
 }
 
+.record-btn {
+  position: relative;
+  left: 5;
+  width: 40px;
+  height: 25px;
+  margin: 5px;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 5px #999;
+  border-radius: 05px;
+}
+
 #buttons {
   position: absolute;
   top: 50%;
@@ -26,36 +38,51 @@ page-piano {
   transform: translateY(4px);
 }
 
+.record-btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
 ion-content {
- background-image: url('/assets/img/simpsonsFondo.jpg');
+ background-image: url('../assets/img/simpsonsFondo.jpg');
 }
 
 #foto1 {
   //background-color: #8bc34a;
-  background-image: url('/assets/img/donBarredora1.jpg');
+  background-image: url('../assets/img/donBarredora1.jpg');
   background-position: 50% 50%;
 }
 
 #foto2 {
-  background-image: url('/assets/img/matanga.jpg');
+  background-image: url('../assets/img/matanga.jpg');
   background-position: 50% 50%;
 }
 
 #foto3 {
-  background-image: url('/assets/img/prestasDinero.jpg');
+  background-image: url('../assets/img/prestasDinero.jpg');
   background-position: 50% 50%;
 }
 
 #foto4 {
-  background-image: url('/assets/img/demediez.jpg');
+  background-image: url('../assets/img/demediez.jpg');
   background-position: 50% 50%;
 }
 #foto5 {
-  background-image: url('/assets/img/sevaaponerfeo.jpg');
+  background-image: url('../assets/img/sevaaponerfeo.jpg');
   background-position: 50% 50%;
 }
 #foto6 {
-  background-image: url('/assets/img/homeroRosca.jpg');
+  background-image: url('../assets/img/homeroRosca.jpg');
   background-position: 50% 50%;
+}
+#play{
+  background-color: green;
+}
+#stop{
+  background-color: yellow;
+}
+#record{
+  background-color: red;
 }
 }
